@@ -7,7 +7,9 @@
   "authors": [
     "Christian Ascone <ascone.christian@gmail.com>"
   ],
-  "main": "dist/angular-signature-pad.js",
+  "main": [
+    "dist/angular-signature-pad.js",
+    "dist/css/signature-pad.css"],
   "keywords": [
     "signature-pad",
     "angular",
