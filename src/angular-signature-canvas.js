@@ -12,6 +12,7 @@ angular.module('angular-signature-canvas', []);
 angular.module('angular-signature-canvas').controller("signaturePadController", function($scope, $http) {
   var ctrl = this;
   var id = "signatureCanvas";
+  var margin = 10;
 
   ctrl.clear = function() {
     ctrl.canvasSignature.clear();
@@ -19,6 +20,8 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
 
   ctrl.init = function() {
     var canvas = document.getElementById(id);
+    canvas.style.margin = margin+"px";
+
     ctrl.canvasSignature = new SignaturePad(canvas);
     $scope.canvas = canvas;
 
@@ -45,8 +48,8 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
       var offsetHeight = canvas.offsetHeight;
 
       var canvasParent = canvas.parentNode;
-      // ATTENZIONE: 10 è il margin del signatureCanvas
-      var width = canvasParent.offsetWidth - (10*2);
+      
+      var width = canvasParent.offsetWidth - (margin*2);
       canvas.width = width;
 
     }
@@ -74,7 +77,7 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
     controllerAs: 'signaturePadCtrl',
     template: '<div id="signature-pad" class="m-signature-pad">' +
       '<div class="m-signature-pad--body">' +
-      '<canvas width="1316" height="300" id="signatureCanvas" style="margin: 10px"></canvas>' +
+      '<canvas width="1316" height="300" id="signatureCanvas"></canvas>' +
       '</div>' +
       '<div class="m-signature-pad--footer">' +
       '<md-button type="button" class="button clear" ng-click="signaturePadCtrl.clear()">Pulisci</md-button>' +
