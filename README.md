@@ -1,4 +1,4 @@
-# angular-signature-pad
+# angular-signature-canvas
 Angular JS Directive for the szimek's signature pad
 
 ## License
