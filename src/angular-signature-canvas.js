@@ -3,13 +3,13 @@
  * @author Christian Ascone <ascone.christian@gmail.com>
  * @version 0.0.1
  *
- * https://github.com/christianascone/angular-signature-pad
+ * https://github.com/christianascone/angular-signature-canvas
  * Copyright (c) 2016 ; Licensed MIT
  */
 
-angular.module('angular-signature-pad', []);
+angular.module('angular-signature-canvas', []);
 
-angular.module('angular-signature-pad').controller("signaturePadController", function($scope, $http) {
+angular.module('angular-signature-canvas').controller("signaturePadController", function($scope, $http) {
   var ctrl = this;
 
   ctrl.clear = function() {

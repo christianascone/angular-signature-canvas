@@ -1,1 +1,1 @@
-angular.module('demoApp', ['angular-signature-pad']);
+angular.module('demoApp', ['angular-signature-canvas']);
