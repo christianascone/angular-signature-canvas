@@ -11,7 +11,8 @@ angular.module('angular-signature-canvas', []);
 
 angular.module('angular-signature-canvas').controller("signaturePadController", function($scope, $http) {
   var ctrl = this;
-  var id = "signatureCanvas";
+  var idContainer = "signature-pad";
+  var idCanvas = "signatureCanvas";
   var margin = 10;
 
   ctrl.clear = function() {
@@ -19,8 +20,16 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
   }
 
   ctrl.init = function() {
-    var canvas = document.getElementById(id);
+    var container = document.getElementById(idContainer);
+    var canvas = document.getElementById(idCanvas);
     canvas.style.margin = margin+"px";
+    
+    container.style.width = ctrl.width+"px";
+    canvas.style.width = ctrl.width+"px";
+    canvas.width = ctrl.width;
+    container.style.height = ctrl.height+"px";
+    canvas.style.height = ctrl.height+"px";
+    canvas.height = ctrl.height;
 
     ctrl.canvasSignature = new SignaturePad(canvas);
     $scope.canvas = canvas;
@@ -37,7 +46,7 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
     );
 
     function resizeCanvas() {
-      var canvas = document.getElementById(id);
+      var canvas = document.getElementById(idCanvas);
 
       // If canvas is not available yet, it stops
       if(!canvas){
@@ -51,6 +60,7 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
       
       var width = canvasParent.offsetWidth - (margin*2);
       canvas.width = width;
+      canvas.style.width = width;
 
     }
 
@@ -72,12 +82,14 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
     required: 'ngModal',
     bindToController: {
       'canvasSignature': '=?',
+      'width': '@',
+      'height': '@',
     },
     controller: 'signaturePadController',
     controllerAs: 'signaturePadCtrl',
     template: '<div id="signature-pad" class="m-signature-pad">' +
       '<div class="m-signature-pad--body">' +
-      '<canvas width="1316" height="300" id="signatureCanvas"></canvas>' +
+      '<canvas id="signatureCanvas"></canvas>' +
       '</div>' +
       '<div class="m-signature-pad--footer">' +
       '<md-button type="button" class="button clear" ng-click="signaturePadCtrl.clear()">Pulisci</md-button>' +
