@@ -1,0 +1,30 @@
+{
+  "name": "angular-signature-canvas",
+  "description": "Angular JS Directive for the szimek's signature pad",
+  "license": "MIT",
+  "version": "0.0.1",
+  "homepage": "https://github.com/christianascone/angular-signature-canvas",
+  "authors": [
+    "Christian Ascone <ascone.christian@gmail.com>"
+  ],
+  "main": [
+    "dist/angular-signature-canvas.js",
+    "dist/css/signature-pad.css"],
+  "keywords": [
+    "signature-pad",
+    "angular",
+    "directive"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/christianascone/angular-signature-canvas.git"
+  },
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": ">=1.3 <2.0",
+    "signature_pad": "~1.5"
+  }
+}

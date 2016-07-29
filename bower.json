@@ -1,0 +1,15 @@
+{
+  "name": "angular-signature-canvas_demo",
+  "description": "Angular-signature-canvas demo",
+  "license": "MIT",
+  "authors": [
+    "Christian Ascone <ascone.christian@gmail.com>"
+  ],
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular-signature-canvas": "0.0.1"
+  }
+}
