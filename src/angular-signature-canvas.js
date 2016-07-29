@@ -11,13 +11,14 @@ angular.module('angular-signature-canvas', []);
 
 angular.module('angular-signature-canvas').controller("signaturePadController", function($scope, $http) {
   var ctrl = this;
+  var id = "signatureCanvas";
 
   ctrl.clear = function() {
     ctrl.canvasSignature.clear();
   }
 
   ctrl.init = function() {
-    var canvas = document.querySelector("canvas");
+    var canvas = document.getElementById(id);
     ctrl.canvasSignature = new SignaturePad(canvas);
     $scope.canvas = canvas;
 
@@ -33,7 +34,6 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
     );
 
     function resizeCanvas() {
-      var id = "signatureCanvas";
       var canvas = document.getElementById(id);
 
       // If canvas is not available yet, it stops
