@@ -26,6 +26,7 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
   var Point = function(x, y, time) {
     this.x = x;
     this.y = y;
+    this.speed = 0;
     this.time = time || new Date().getTime();
   };
   Point.prototype.velocityFrom = function(start) {
@@ -48,6 +49,11 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
   ctrl.addSignaturePoint = function(event) {
     var point = ctrl.createPoint(event, ctrl.canvasSignature._canvas);
     ctrl.points.push(point);
+  }
+
+  ctrl.calcPointSpeed = function(startPoint, endPoint) {
+      var speed = endPoint.velocityFrom(startPoint);
+      endPoint.speed = speed;
   }
 
   /**
@@ -78,16 +84,22 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
       // Callback function called every time the signature starts
       onBegin: function(event) {ctrl.addSignaturePoint(event)},
       // Callback function called every time the signature ends
-      onEnd: function(event) {ctrl.addSignaturePoint(event)}
+      onEnd: function(event) {
+        ctrl.addSignaturePoint(event);
+        var length = ctrl.points.length;
+        ctrl.calcPointSpeed(ctrl.points[length-2], ctrl.points[length-1]);
+      }
     });
     // Add listener for callback function to be called when the mouse moves (during signature)
     ctrl.canvasSignature._canvas.addEventListener("mousemove", function(event) {
       if (ctrl.canvasSignature._mouseButtonDown) {
         ctrl.addSignaturePoint(event);
+        var length = ctrl.points.length;
+        ctrl.calcPointSpeed(ctrl.points[length-2], ctrl.points[length-1]);
       }
     });
     ctrl.canvasSignature.signaturePoints = ctrl.points;
-    
+
     $scope.canvas = canvas;
 
     // Check width of the parent node in order to init the pad
