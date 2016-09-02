@@ -86,6 +86,8 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
         ctrl.addSignaturePoint(event);
       }
     });
+    ctrl.canvasSignature.signaturePoints = ctrl.points;
+    
     $scope.canvas = canvas;
 
     // Check width of the parent node in order to init the pad
