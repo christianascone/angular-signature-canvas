@@ -71,11 +71,7 @@ angular.module('angular-signature-canvas').controller("signaturePadController", 
     var canvas = document.getElementById(idCanvas);
     canvas.style.margin = margin + "px";
 
-    container.style.width = ctrl.width + "px";
-    canvas.style.width = ctrl.width + "px";
     canvas.width = ctrl.width;
-    container.style.height = ctrl.height + "px";
-    canvas.style.height = ctrl.height + "px";
     canvas.height = ctrl.height;
 
     ctrl.canvasSignature = new SignaturePad(canvas, {
